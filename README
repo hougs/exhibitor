@@ -1,4 +1,6 @@
-This is your new Play application
-=================================
+Exhibitor
+=========
 
-This file will be packaged with your application, when using `activator dist`.
+Exhibitor is a simple play application for viewing data related to entities
+that have a **supernova schema**. 
+
