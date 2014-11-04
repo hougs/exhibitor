@@ -22,7 +22,7 @@ table "players" do
 end
 
 
-table "kickoffplays", :embed_in => :players, :embed_on => :kicker do
+table "kickoffplays", :embed_in => :players, :embed_on => :PLAYER do
 	column "pid", :key
 	column "type", :string
 	column "kicker", :integer, :references => "players"
@@ -34,7 +34,7 @@ table "kickoffplays", :embed_in => :players, :embed_on => :kicker do
 end
 
 
-table "passplays", :embed_in => :players, :on => :passer do
+table "passplays", :embed_in => :players, :embed_on => :PLAYER do
 	column "pid", :key
 	column "type", :string
 	column "passer", :integer, :references => "players"
@@ -44,7 +44,7 @@ table "passplays", :embed_in => :players, :on => :passer do
 end
 
 
-table "puntplays", :embed_in => :players, :on => :punter  do
+table "puntplays", :embed_in => :players, :embed_on => :PLAYER  do
 	column "pid", :key
 	column "type", :string
 	column "punter", :integer, :references => "players"
@@ -53,7 +53,7 @@ table "puntplays", :embed_in => :players, :on => :punter  do
 	column "pnet", :integer
 end
 
-table "rushplays", :embed_in => :players, :on => :ball_carrier  do
+table "rushplays", :embed_in => :players, :embed_on => :PLAYER do
 	column "pid", :key
 	column "type", :string
 	column "ball_carrier", :integer, :references => "players"
