@@ -1,7 +1,12 @@
-@(message: String)
+@(players: List[Player])
+
+@import helper._
 
 @main("Welcome to Play") {
-
-    @play20.welcome(message)
+    <ul>
+    @players.map { player =>
+            <li> @player.lastName </li>
+        }
+    </ul>
 
 }
