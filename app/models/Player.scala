@@ -11,7 +11,22 @@ import mongoContext._
 import org.bson.types.ObjectId
 
 
-
+/**
+ * In a more perfect world, the Lists of plays would be options, Salat does not currently support this.
+ * @param id
+ * @param firstName
+ * @param lastName
+ * @param playByPlayName
+ * @param primaryPosition
+ * @param alternatePosition
+ * @param height
+ * @param yearOfBirth
+ * @param startYear
+ * @param rushPlays
+ * @param passPlays
+ * @param kickoffPlays
+ * @param puntPlays
+ */
 case class Player(@Key("_id") id: ObjectId = new ObjectId,
                    @Key("FNAME") firstName: String,
                    @Key("LNAME") lastName: String,
@@ -21,16 +36,28 @@ case class Player(@Key("_id") id: ObjectId = new ObjectId,
                    @Key("HEIGHT") height: Int,
                    @Key("YOB") yearOfBirth: BigInt,
                    @Key("START") startYear: BigInt,
-                   @Key("rushplays") rushPlays: Option[List[RushPlays]],
-                   @Key("plassplays") passPlays: Option[List[PassPlays]],
-                   @Key("kickoffplays") kickoffPlays: Option[List[KickOffPlays]],
-                   @Key("puntplays") puntPlays: Option[List[PuntPlays]]
+                   @Key("rushplays") rushPlays: List[RushPlay] = List[RushPlay](),
+                   @Key("passplays") passPlays: List[PassPlay] = List[PassPlay](),
+                   @Key("kickoffplays") kickoffPlays: List[KickOffPlay] = List[KickOffPlay](),
+                   @Key("puntplays") puntPlays: List[PuntPlay] = List[PuntPlay]()
                    )
 
-case class RushPlays(yds: Int, dir: String)
-case class PassPlays(passTarget: String, location: String, yards: Int)
-case class KickOffPlays(gross: Int, net: Int, touchBack: String, returner: String, returnYardage: Int)
-case class PuntPlays(returnYardage: Int, gross: Int, net: Int)
+case class RushPlay(@Key("yds") yards: Int,
+                    @Key("dir") direction: String)
+
+case class PassPlay(@Key("trg") passTarget: String,
+                    @Key("loc") location: String,
+                    @Key("yds") yards: Int)
+
+case class KickOffPlay(@Key("kgro") gross: Int,
+                       @Key("knet") net: Int,
+                       @Key("ktb") touchBack: String,
+                       @Key("kr") returner: String,
+                       returnYardage: Int)
+
+case class PuntPlay(@Key("pry") returnYardage: Int,
+                    @Key("pgro") gross: Int,
+                    @Key("pnet") net: Int)
 
 object PlayerDAO extends ModelCompanion[Player, ObjectId]{
   val players_collection = MongoConnection()("test")("players")

@@ -1,0 +1,20 @@
+@(plays: List[models.PuntPlay])
+
+<tr>
+    <td>Return Yardage:</td>
+    @plays.map { play =>
+    <td>@play.returnYardage</td>
+    }
+</tr>
+<tr>
+    <td>Gross Yardage:</td>
+    @plays.map {play =>
+    <td>@play.gross</td>
+    }
+</tr>
+<tr>
+    <td>Net Yardage:</td>
+    @plays.map {play =>
+    <td>@play.net </td>
+    }
+</tr>
