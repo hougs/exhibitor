@@ -1,12 +1,11 @@
 @(players: List[Player])
 
-@import helper._
 
-@main("Welcome to Play") {
-    <ul>
+@main("Welcome to Football Time!") {
+<div class="list-group">
     @players.map { player =>
-            <li> @player.lastName </li>
-        }
-    </ul>
+    <a href="/players/@player.id" class="list-group-item"> @player.firstName @player.lastName </a>
+    }
+</div>
 
 }

@@ -29,5 +29,12 @@ object Application extends Controller {
   def index = Action {
     Ok(views.html.index(Player.all()))
   }
+  def all = Action {
+    Ok(views.html.index(Player.all()))
+  }
+
+  def player(id: String) = Action {
+    Ok(views.html.player(Player.findById(id).get))
+  }
 
 }

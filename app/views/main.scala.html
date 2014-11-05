@@ -2,14 +2,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/hello.js")" type="text/javascript"></script>
     </head>
     <body>
-        @content
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
+
+        <div class="container">
+            <div class="page-header"><h1>@title</h1></dir>
+            @content
+        </div>
     </body>
 </html>

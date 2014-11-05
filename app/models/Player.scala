@@ -1,14 +1,14 @@
 package models
 
 import com.mongodb.casbah.Imports._
-import com.mongodb.casbah.commons.MongoDBObject
-import com.mongodb.casbah.query.dsl.BSONType.BSONObjectId
 import com.novus.salat.annotations.{Salat, Key}
 import com.novus.salat.dao.ModelCompanion
 import com.novus.salat.dao.SalatDAO
 import com.mongodb.casbah.{Imports, MongoConnection}
+import com.mongodb.casbah.Imports.ObjectId
 import com.novus.salat.Context
 import mongoContext._
+import org.bson.types.ObjectId
 
 
 
@@ -29,18 +29,15 @@ case class Player(@Key("_id") id: ObjectId = new ObjectId,
 
 case class RushPlays(yds: Int, dir: String)
 case class PassPlays(passTarget: String, location: String, yards: Int)
-
 case class KickOffPlays(gross: Int, net: Int, touchBack: String, returner: String, returnYardage: Int)
-
 case class PuntPlays(returnYardage: Int, gross: Int, net: Int)
 
 object PlayerDAO extends ModelCompanion[Player, ObjectId]{
   val players_collection = MongoConnection()("test")("players")
   val dao = new SalatDAO[Player, ObjectId](collection = players_collection) {}
 }
-//ref = MongoDBObject("_id" -> MongoDBObject()
+
 object Player {
-  def all(): List[Player] = PlayerDAO.findAll().toList
-  //def findById(): Player = PlayerDAO.findOneById()
-  //def one(): Option[Player] = PlayerDAO.findOne()
+  def all(): List[Player] = PlayerDAO.find(DBObject("FNAME" -> DBObject("$exists" -> true))).limit(50).toList
+  def findById(id: String): Option[Player] = PlayerDAO.findOne(MongoDBObject("_id" -> new ObjectId(id)))
 }
