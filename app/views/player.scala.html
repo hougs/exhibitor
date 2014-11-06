@@ -10,68 +10,50 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class ="span3"><img src="@routes.Assets.at("/images/FB_Player_circe_1920cropped.jpg")"></div>
-                        <div class="span7 offset4">
+                        <div class ="col-md-3"><img src="@routes.Assets.at("/images/FB_Player_circe_1920cropped.jpg")">
                             <table class="table table-user-information">
                                 <tbody>
                                 <tr>
-                                    <td>Primary Position:</td>
+                                    <th>Primary</th>
                                     <td>@player.primaryPosition</td>
                                 </tr>
                                 <tr>
-                                    <td>Alternate Position:</td>
+                                    <th>Alternate</th>
                                     <td>@player.alternatePosition</td>
                                 </tr>
                                 <tr>
-                                    <td>Height:</td>
+                                    <th>Height</th>
                                     <td>@player.height</td>
                                 </tr>
 
 
                                 <tr>
-                                    <td>Year of Birth:</td>
+                                    <th>Year of Birth</th>
                                     <td>@player.yearOfBirth</td>
                                 </tr>
                                 <tr>
-                                    <td>NFL Start Year:</td>
+                                    <th>NFL Start Year</th>
                                     <td>@player.startYear</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="span3">
-                            <div class="panel panel-info">
-                                <h3 class="panel-title">Punts</h3>
-                            </div>
-                            <div class="panel-body">
-                                    @if(player.puntPlays.isEmpty != true) {
-                                        @puntsTable(player.puntPlays)
-                                    }
-                            </div>
-                        </div>
 
-                        <div class="span3 offset3">
-                            <div class="panel panel-info">
-                                <h3 class="panel-title">Passes</h3>
-                            </div>
-                            <div class="panel-body">
-                                @if(player.passPlays.isEmpty != true) {
-                                @passesTable(player.passPlays)
-                                }
-                            </div>
-                        </div>
-                        <div class="span3 offset6">
-                            <div class="panel panel-info">
-                                <h3 class="panel-title">Kickoffs</h3>
-                            </div>
-                            <div class="panel-body">
-                                @if(player.kickoffPlays.isEmpty != true) {
-                                @kickoffsTable(player.kickoffPlays)
-                                }
-                            </div>
-                        </div>
+                        @if(player.puntPlays.isEmpty != true) {
+                            @puntsTable(player.puntPlays)
+                        }
+
+                        @if(player.passPlays.isEmpty != true) {
+                            @passesTable(player.passPlays)
+                        }
+
+                        @if(player.kickoffPlays.isEmpty != true) {
+                            @kickoffsTable(player.kickoffPlays)
+                        }
+
+                        @if(player.rushPlays.isEmpty != true) {
+                            @rushesTable(player.rushPlays)
+                        }
                         <div class="span3 offset9"> </div>
                     </div>
                 </div>

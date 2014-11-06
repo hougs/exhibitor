@@ -1,19 +1,28 @@
-@(plays: List[models.PuntPlay])
-
+@(plays: List[models.RushPlay])
+<div class="panel col-md-3">
+    <div class="panel-info">
+        <div class=panel-heading">
+            <h3 class="panel-title">Rushes</h3>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="scroll">
 <table class="table">
     <thead>
         <tr>
-            <th>Return Yardage</th>
-            <th>Gross Yardage</th>
-            <th>Net Yardage</th>
+            <th>Yards</th>
+            <th>Direction</th>
         </tr>
     </thead>
-    <tboday>
+    <tbody>
             @plays.map { play =>
             <tr>
-                <td>@play.returnYardage</td><td>@play.gross</td><td>@play.net</td>
+                <td>@play.yards</td><td>@play.direction</td>
             </tr>
             }
 
-    </tboday>
+    </tbody>
 </table>
+</div>
+</div>
+    </div>

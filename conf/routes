@@ -9,6 +9,7 @@ GET     /                           controllers.Application.index
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # List all players
+GET     /players/                   controllers.Application.index
 GET     /players/all                controllers.Application.index
 
 # Get by Id

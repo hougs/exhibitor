@@ -1,19 +1,30 @@
 @(plays: List[models.PassPlay])
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Pass Target</th>
-            <th>Location</th>
-            <th>Yards</th>
-        </tr>
-    </thead>
-    <tboday>
-            @plays.map { play =>
-            <tr>
-                <td>@play.passTarget</td><td>@play.location</td><td>@play.yards</td>
-            </tr>
-            }
-
-    </tboday>
-</table>
+<div class="panel col-md-3">
+    <div class="panel-info">
+        <div class=panel-heading">
+            <h3 class="panel-title">Passes</h3>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="scroll">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Target</th>
+                    <th>Location</th>
+                    <th>Yards</th>
+                </tr>
+                </thead>
+                <tbody>
+                @plays.map { play =>
+                <tr>
+                    <td>@play.passTarget</td>
+                    <td>@play.location</td>
+                    <td>@play.yards</td>
+                </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
