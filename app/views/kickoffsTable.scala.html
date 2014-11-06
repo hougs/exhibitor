@@ -1,0 +1,25 @@
+@(plays: List[models.KickOffPlay])
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Gross Yardage</th>
+            <th>Net Yardage</th>
+            <th>Touch Back</th>
+            <th>Returner</th>
+            <th>Return Yardage</th>
+        </tr>
+    </thead>
+    <tboday>
+            @plays.map { play =>
+            <tr>
+                <td>@play.gross</td>
+                <td>@play.net</td>
+                <td>@play.touchBack</td>
+                <td>@play.returner</td>
+                <td>@play.returnYardage</td>
+            </tr>
+            }
+
+    </tboday>
+</table>

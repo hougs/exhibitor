@@ -53,7 +53,7 @@ case class KickOffPlay(@Key("kgro") gross: Int,
                        @Key("knet") net: Int,
                        @Key("ktb") touchBack: String,
                        @Key("kr") returner: String,
-                       returnYardage: Int)
+                       @Key("kry") returnYardage: Int)
 
 case class PuntPlay(@Key("pry") returnYardage: Int,
                     @Key("pgro") gross: Int,

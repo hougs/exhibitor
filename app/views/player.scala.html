@@ -46,17 +46,32 @@
                                 <h3 class="panel-title">Punts</h3>
                             </div>
                             <div class="panel-body">
-                                <table class="table table-punt-information">
-                                    <tbody>
                                     @if(player.puntPlays.isEmpty != true) {
                                         @puntsTable(player.puntPlays)
                                     }
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
-                        <div class="span3 offset3"> </div>
-                        <div class="span3 offset6"> </div>
+
+                        <div class="span3 offset3">
+                            <div class="panel panel-info">
+                                <h3 class="panel-title">Passes</h3>
+                            </div>
+                            <div class="panel-body">
+                                @if(player.passPlays.isEmpty != true) {
+                                @passesTable(player.passPlays)
+                                }
+                            </div>
+                        </div>
+                        <div class="span3 offset6">
+                            <div class="panel panel-info">
+                                <h3 class="panel-title">Kickoffs</h3>
+                            </div>
+                            <div class="panel-body">
+                                @if(player.kickoffPlays.isEmpty != true) {
+                                @kickoffsTable(player.kickoffPlays)
+                                }
+                            </div>
+                        </div>
                         <div class="span3 offset9"> </div>
                     </div>
                 </div>
